@@ -33,7 +33,7 @@ def send_tel_alert(textsend):
     bot.sendMessage('821786933', text=textsend)
 #@myalertbot1234
 
-master=pd.read_csv('/Users/test/Documents/Trading/Tele Alerts AB FINAL HAIN 30 Strategy copy heroku/Trading Patterns Anomalies 2022_Updated.csv')
+master=pd.read_csv('Trading Patterns Anomalies 2022_Updated.csv')
 
 df.reset_index(inplace=True)
 
