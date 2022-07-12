@@ -11,7 +11,7 @@ import time
 from nsepy import get_history
 import numpy as np
 import pandas as pd
-import talib as ta
+import pandas_ta as ta
 import quantstats as qs
 import requests
 import telepot
