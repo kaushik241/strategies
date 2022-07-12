@@ -58,7 +58,7 @@ df['RSI3_Abs_Change'] = ta.rsi((df['Adj Close'] - df['Adj Close'].shift(1)), tim
 #8 200 EMA
 df['200_EMA'] = ta.ema(df['Adj Close'], timeperiod = 200)
 #9 200 SMA
-df['200_SMA'] = ta.ma(df['Adj Close'], timeperiod = 200)
+df['200_SMA'] = ta.sma(df['Adj Close'], timeperiod = 200)
 #10 Pivot Points
 df['PP'] = (df['High'].shift(1) + df['Low'].shift(1) + df['Close'].shift(1))/3
 #11 S1
