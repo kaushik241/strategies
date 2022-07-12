@@ -1,0 +1,9 @@
+streamlit
+talib
+yfinance
+os
+bs4
+pandas_ta
+websocket
+python-dateutil
+requests
