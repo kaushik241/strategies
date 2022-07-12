@@ -1,0 +1,31 @@
+Condition,Instrument,Type,Long/Short,Entry,Exit,Profit Factor,Win Days
+1,Nifty,Fri-Monday Effect,Short,Today is Fri <=0 (Closing Basis),Exit on Monday Closing Basis,1.64,54%
+2,Nifty,Fri-Monday Effect,Long,Today is Fri >0 (Closing Basis),Exit on Monday Closing Basis,1.48,65%
+3,Nifty,Fri-Monday Effect,Long,Today is Fri >1% (Closing Basis),Exit on Monday Closing Basis,1.58,71%
+4,Nifty,Counter Tuesday,Long,Today is Mon <-1% (Closing Basis),Exit on Tuesday Closing Basis,2.48,63%
+5,Nifty,1% Down on Thursday,Long,Today is Thurs <-1% (Closing Basis),Exit on Fri Closing Basis,3.24,60%
+6,Nifty,20 Day Low (Fri),Short,Today is Fri and 20 Day Low (Closing Basis),Exit on Monday Closing Basis,4.23,63%
+7,Nifty,20 Day Low on Mon + Counter Trend Tues,Long,Today is Mon and 20 Day Low (Closing Basis),Exit on Tuesday Closing Basis,2.24,64%
+8,Nifty,20 Day Low on Wednseday + Thursday,Long,Today is Thurs >0 and 20 Day Low (Closing Basis) on Previous Day,Exit on t+10 Basis,4.22,69%
+9,Nifty,RSI(3) on Daliy Abs. Change,Long,Today is Mon and RSI(3) on Daily Abs. Change < 30,Exit on Tuesday Closing Basis,2.68,63%
+10,Nifty,RSI(3) on Daliy Abs. Change,Short,Today is Fri and RSI(3) on Daliy Abs. Change < 30,Exit on Monday Closing Basis,2.58,57%
+11,Nifty,RSI(3) on Daliy Abs. Change,Long,Today is Mon and RSI(3) on Daliy Abs. Change > 70,Exit on Tuesday Closing Basis,2.59,64%
+12,Nifty,Outside Day Pattern BTST,Long,Today is Wednesday and an Outside Day (Closing Basis) %Change < 0,Exit on Thursday Opening Basis,2.6,74%
+13,Nifty,2 Period RSI and Close < 200 EMA,Long,Today is Mon and RSI(2) <= 5,Exit on Tuesday Closing Basis,2.84,67%
+14,Nifty,2 Period RSI and Close > 200 EMA,Short,Today is Thurs and RSI(2) <= 5,Exit on Fri Closing Basis,3.36,75%
+15,Nifty,3 Day High & RSI(2),Long,"Today is Fri, 3 Day High, RSI(2) > 90",Exit on Monday Closing Basis,2.78,66%
+16,Nifty,Cum. RSI(2) for 3 Days,Long,Cum. RSI(2) (3 Days) < 35 & Close > 200 SMA,RSI(2) > 65 & Under 5 Days,8.4,80%
+17,Nifty,Cum. RSI(2) for 2 Days,Long,Cum. RSI(2) (2 Days) < 35 & Close > 200 SMA,RSI(2) > 65 & Under 4 Days,27.63,90%
+18,Nifty,Cum. RSI(2) for 2 Days,Long,Cum. RSI(2) (2 Days) < 50 & Close > 200 SMA,RSI(2) > 65 & Under 4 Days,26.93,91%
+19,Nifty,Double 7’s Strategy,Long,Close = 7 Day Low & Close > 200 SMA,Close = 7 Day High,1.73,75%
+20,Nifty,Index Short Strategy,Short,Close is up 4 days in a row & Close < 200 SMA,Cover when Close < 5 SMA & Under 5 Days,6.5,76%
+21,Nifty,VIX RSI Strategy,Long,RSI(2) of VIX > 90 & VIX Close > Previous Day VIX & RSI(2) Index < 30 & Close > 200 EMA,RSI(2) > 65 & Under 5 Days,12.79,88%
+22,Nifty,VIX Stretch Strategy,Long,VIX > 5% of 10 DMA (VIX) at least 3 Days & Close > 200 SMA,RSI(2) > 65 & Under 5 Days,20.22,91%
+23,Nifty,Oversold RSI Strategy,Long,RSI(2) < 5 & Close > 200 SMA,Exit when Close > 5 SMA & Under 3 Days,51.58,94%
+24,Nifty,Friday Pivot Points v1,Long,Today is Friday & Close & Previous Day Close < 0 & Open > Previous Day Close & High > R1,Exit on Monday Closing Basis,2.65,66%
+25,Nifty,Friday Pivot Points v2,Long,Today is Friday & Open = PP & High > R2 & Low > S1 & Close > R1,Exit on Monday Closing Basis,1.71,68%
+26,Nifty,Monday 20 Day Low Pivot Points,Long,Today is Monday & High < R1 & Close = 20 Day Low & Close < S1,Exit on Tuesday Closing Basis,2.51,62%
+27,Nifty,Monday Pivot Points v2,Long,Today is Monday & Close & Previous Day Close < 0 & Open > Previous Day Close & High < R1,Exit on Tuesday Closing Basis,2.36,68%
+28,Nifty,Wednesday Pivot Points,Long,Today is Wednesday & Open > Previous Day Close & Close > 0 & Close > R1 & Low > S1 & Monday Close < 0,Exit on Thursday Closing Basis,1.87,63%
+29,Nifty,Monday Dip,Short,Today is Monday & Open < Previous Day Close & Previous Day Close < 0 & High < R1 & Low < S1 & Close = PP,Exit on Tuesday Closing Basis,3,62%
+30,Nifty,RSI(10)<30 & Close > 200 SMA,Long,RSI(10)<30 & Close > 200 SMA,Exit when RSI(10)>40 or after 10 days next day open,91,85%
