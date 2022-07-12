@@ -97,7 +97,7 @@ cur_vix=float(data_array[2])
 vixnew=pd.DataFrame(vix["Close"])
 
 vixnew.append({'Close':cur_vix},ignore_index=True)
-vixnew['10_SMA'] = ta.ma(vixnew['Close'], timeperiod = 10)
+vixnew['10_SMA'] = ta.sma(vixnew['Close'], timeperiod = 10)
 vixnew['RSI2'] = ta.rsi(vixnew['Close'], timeperiod = 2)
 
 conditions_met=pd.DataFrame(columns=['conditions_met'])
