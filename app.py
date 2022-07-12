@@ -22,17 +22,19 @@ st.set_page_config(page_title='Anomalies Dashboard', page_icon=':tada:',layout='
 st.title('Strategies Dashboard')
 
 
+def datetotimestamp(date):
+    time_tuple = date.timetuple()
+    timestamp= round(time.mktime(time_tuple))
+    return timestamp
+
+def timestamptodate(timestamp):
+    return datetime.fromtimestamp(timestamp)
+
 # In[7]:
 
 
 df=pd.DataFrame()
 df = yf.download('^NSEI',interval = '1d', period='1y')
-
-def send_tel_alert(textsend):
-    bot = telepot.Bot('5462022348:AAGk-ZvpMZhlr544CuMMTOOXY4CG14mfsEU')
-    #bot.sendPhoto('821786933', photo=open('test1.png', 'rb'))
-    bot.sendMessage('821786933', text=textsend)
-#@myalertbot1234
 
 master=pd.read_csv('Trading Patterns Anomalies 2022_Updated.csv')
 
@@ -75,27 +77,29 @@ df['RSI10'] = ta.rsi(df['Adj Close'], timeperiod = 10)
 # In[9]:
 
 
-today = datetime.datetime.now().date()-relativedelta(days=1)+datetime.timedelta(hours=5.5)
-past = datetime.datetime.now().date()- relativedelta(days=25)+datetime.timedelta(hours=5.5)
+start=datetotimestamp(datetime.today()-relativedelta(days=40)+datetime.timedelta(hours=9.5))
+end= datetotimestamp(datetime.today()+datetime.timedelta(hours=9.4))
+url='https://priceapi.moneycontrol.com/techCharts/history?symbol=36&resolution=1D&from='+str(start) + '&to=' +str(end)
 
-stock_url='https://www.moneycontrol.com/indian-indices/india-vix-36.html'
+resp=requests.get(url).json()
+data=pd.DataFrame(resp)
 
-response = requests.get(stock_url)
-print(response)
+date = []
+for dt in data['t']:
+    date.append({'Date':timestamptodate(dt).date()})
+dt= pd.DataFrame(date)
 
-soup = BeautifulSoup(response.text, 'html.parser')
-data_array = soup.find(id='mc_mainWrapper').getText().strip('').split('\n')
+vixnew = pd.concat([dt,data['c']],axis=1)
 
-data_array = list(filter(None, data_array))
-cur_vix=float(data_array[2])
-cur_vix
+vixnew.columns = ['Date', 'Close']
+vixnew['10_SMA'] = ta.sma(vixnew['Close'], timeperiod = 10)
+vixnew['RSI2'] = ta.rsi(vixnew['Close'], timeperiod = 2)
 
-
-today
-past
+start
+end
 
 st.dataframe(df)
-st.dataframe(vix)
+st.dataframe(vixnew)
 
 
 
