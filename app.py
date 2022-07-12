@@ -77,11 +77,16 @@ df['RSI10'] = ta.rsi(df['Adj Close'], timeperiod = 10)
 
 today = datetime.datetime.now().date()-relativedelta(days=1)+datetime.timedelta(hours=5.5)
 past = datetime.datetime.now().date()- relativedelta(days=25)+datetime.timedelta(hours=5.5)
+
+vix = get_history(symbol="INDIAVIX",
+            start=past,
+            end=today,
+            index=True)
 today
 past
 
 st.dataframe(df)
-st.dataframe(vixnew)
+st.dataframe(vix)
 
 
 
