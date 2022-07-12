@@ -1,0 +1,9 @@
+streamlit
+matplotlib
+pandas_ta
+mplfinance
+smartapi-python
+websocket
+vectorbt
+python-dateutil
+requests
