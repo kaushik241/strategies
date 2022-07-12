@@ -52,17 +52,17 @@ df['20_DL'] = np.where((df.Close<=df.Close.rolling(20).min()),'20 DL'," ")
 #3 Weekday
 df['week'] = df['Date'].apply(lambda x: x.weekday())
 #4 RSI 2
-df['RSI2'] = ta.RSI(df['Adj Close'], timeperiod = 2)
+df['RSI2'] = ta.rsi(df['Adj Close'], timeperiod = 2)
 #5 3 Day High
 df['3DH'] = df['3DH'] = np.where((df.Close >= df.Close.rolling(3).max()),'3DH'," ")
 #6 Outside Day
 df['Outside_Day'] = np.where(((df['High'] > df['High'].shift(1)) & (df['Low'] < df['Low'].shift(1))),"Outside Day"," ")
 #7 RSI 3 on Abs. Change
-df['RSI3_Abs_Change'] = ta.RSI((df['Adj Close'] - df['Adj Close'].shift(1)), timeperiod = 3)
+df['RSI3_Abs_Change'] = ta.rsi((df['Adj Close'] - df['Adj Close'].shift(1)), timeperiod = 3)
 #8 200 EMA
-df['200_EMA'] = ta.EMA(df['Adj Close'], timeperiod = 200)
+df['200_EMA'] = ta.ema(df['Adj Close'], timeperiod = 200)
 #9 200 SMA
-df['200_SMA'] = ta.MA(df['Adj Close'], timeperiod = 200)
+df['200_SMA'] = ta.ma(df['Adj Close'], timeperiod = 200)
 #10 Pivot Points
 df['PP'] = (df['High'].shift(1) + df['Low'].shift(1) + df['Close'].shift(1))/3
 #11 S1
@@ -72,7 +72,7 @@ df['R1'] = (2*df['PP'] - (df['Low'].shift(1)))
 #13 R2
 df['R2'] = df['PP'] + (df['High'].shift(1) - df['Low'].shift(1))
 #14 RSI10
-df['RSI10'] = ta.RSI(df['Adj Close'], timeperiod = 10)
+df['RSI10'] = ta.rsi(df['Adj Close'], timeperiod = 10)
 
 
 # In[9]:
