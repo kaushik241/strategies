@@ -12,11 +12,7 @@ from nsepy import get_history
 import numpy as np
 import pandas as pd
 import pandas_ta as ta
-import quantstats as qs
 import requests
-import telepot
-import os
-import pause
 from bs4 import BeautifulSoup
 import streamlit as st
 
