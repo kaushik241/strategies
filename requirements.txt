@@ -1,7 +1,6 @@
 streamlit
 pandas_ta
 yfinance
-os
 bs4
 websocket
 python-dateutil
