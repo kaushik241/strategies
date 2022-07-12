@@ -5,3 +5,4 @@ bs4
 websocket
 python-dateutil
 requests
+nsepy
