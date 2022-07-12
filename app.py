@@ -78,10 +78,19 @@ df['RSI10'] = ta.rsi(df['Adj Close'], timeperiod = 10)
 today = datetime.datetime.now().date()-relativedelta(days=1)+datetime.timedelta(hours=5.5)
 past = datetime.datetime.now().date()- relativedelta(days=25)+datetime.timedelta(hours=5.5)
 
-vix = get_history(symbol="INDIAVIX",
-            start=past,
-            end=today,
-            index=True)
+stock_url='https://www.moneycontrol.com/indian-indices/india-vix-36.html'
+
+response = requests.get(stock_url)
+print(response)
+
+soup = BeautifulSoup(response.text, 'html.parser')
+data_array = soup.find(id='mc_mainWrapper').getText().strip('').split('\n')
+
+data_array = list(filter(None, data_array))
+cur_vix=float(data_array[2])
+cur_vix
+
+
 today
 past
 
