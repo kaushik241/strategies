@@ -18,7 +18,7 @@ from bs4 import BeautifulSoup
 import streamlit as st
 from dateutil.relativedelta import relativedelta
 
-st.set_page_config(page_title='Anomalies Dashboard', page_icon=':tada:',layout='wide')
+st.set_page_config(page_title='Strategies Dashboard', page_icon=':tada:',layout='wide')
 st.title('Strategies Dashboard')
 
 
@@ -94,10 +94,6 @@ vixnew = pd.concat([dt,data['c']],axis=1)
 vixnew.columns = ['Date', 'Close']
 vixnew['10_SMA'] = ta.sma(vixnew['Close'], timeperiod = 10)
 vixnew['RSI2'] = ta.rsi(vixnew['Close'], timeperiod = 2)
-
-start
-end
-
 
 #1 Percentage Change
 df['%Change'] = df['Adj Close']/df['Close'].shift(1)-1
@@ -280,9 +276,17 @@ def check():
 
 
 st.button('Get current conditions', on_click=check())
+st.header('Nifty Data')
 st.dataframe(df[-10:])
-st.dataframe(vixnew[-5])
+st.header('Vix Data')
+st.dataframe(vixnew[-5:])
 
-
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 
