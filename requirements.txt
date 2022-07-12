@@ -1,9 +1,8 @@
 streamlit
-talib
+pandas_ta
 yfinance
 os
 bs4
-pandas_ta
 websocket
 python-dateutil
 requests
