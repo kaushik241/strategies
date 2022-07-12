@@ -16,10 +16,10 @@ import pandas_ta as ta
 import requests
 from bs4 import BeautifulSoup
 import streamlit as st
+from dateutil.relativedelta import relativedelta
 
 st.set_page_config(page_title='Anomalies Dashboard', page_icon=':tada:',layout='wide')
 st.title('Strategies Dashboard')
-from dateutil.relativedelta import relativedelta
 
 
 # In[7]:
@@ -75,9 +75,9 @@ df['RSI10'] = ta.rsi(df['Adj Close'], timeperiod = 10)
 # In[9]:
 
 
-today = datetime.datetime.now().date()-relativedelta(days=1)
+today = datetime.datetime.now().date()-relativedelta(days=1)+datetime.timedelta(hours=5.5)
+past = datetime.datetime.now().date()- relativedelta(days=25)+datetime.timedelta(hours=5.5)
 
-past = datetime.datetime.now().date()- relativedelta(days=25)
 
 vix = get_history(symbol="INDIAVIX",
             start=past,
