@@ -28,7 +28,7 @@ def datetotimestamp(date):
     return timestamp
 
 def timestamptodate(timestamp):
-    return datetime.fromtimestamp(timestamp)
+    return datetime.datetime.fromtimestamp(timestamp)
 
 # In[7]:
 
