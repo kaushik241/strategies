@@ -81,6 +81,12 @@ start=datetotimestamp(datetime.datetime.now().date()-relativedelta(days=40)+date
 end= datetotimestamp(datetime.datetime.now().date()+datetime.timedelta(hours=9.4))
 url='https://priceapi.moneycontrol.com/techCharts/history?symbol=36&resolution=1D&from='+str(start) + '&to=' +str(end)
 
+
+start
+end
+url
+
+
 resp=requests.get(url).json()
 data=pd.DataFrame(resp)
 
