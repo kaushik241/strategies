@@ -77,8 +77,8 @@ df['RSI10'] = ta.rsi(df['Adj Close'], timeperiod = 10)
 # In[9]:
 
 
-start=datetotimestamp(datetime.today()-relativedelta(days=40)+datetime.timedelta(hours=9.5))
-end= datetotimestamp(datetime.today()+datetime.timedelta(hours=9.4))
+start=datetotimestamp(datetime.datetime.now().date()-relativedelta(days=40)+datetime.timedelta(hours=9.5))
+end= datetotimestamp(datetime.datetime.now().date()+datetime.timedelta(hours=9.4))
 url='https://priceapi.moneycontrol.com/techCharts/history?symbol=36&resolution=1D&from='+str(start) + '&to=' +str(end)
 
 resp=requests.get(url).json()
