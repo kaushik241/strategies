@@ -191,12 +191,12 @@ def check():
         conditions_met = conditions_met.append({'conditions_met':20},ignore_index=True)
 
     #21 RSI(2) of VIX > 90 & VIX Close > Previous Day VIX & RSI(2) Index < 30 & Close > 200 EMA
-    if( (vixnew['RSI2'].iloc[-1]>90) & (vixnew['Close'].iloc[-1] > vixnew['Close'].iloc[-2]) &  (df['RSI2'].iloc[-1]<30)  &   (df['Adj Close'].iloc[-1] > df['200_SMA'].iloc[-1]) ):
-        conditions_met = conditions_met.append({'conditions_met':21},ignore_index=True)
+    #if( (vixnew['RSI2'].iloc[-1]>90) & (vixnew['Close'].iloc[-1] > vixnew['Close'].iloc[-2]) &  (df['RSI2'].iloc[-1]<30)  &   (df['Adj Close'].iloc[-1] > df['200_SMA'].iloc[-1]) ):
+        #conditions_met = conditions_met.append({'conditions_met':21},ignore_index=True)
 
     #22 VIX > 5% of 10 DMA (VIX) at least 3 Days & Close > 200 SMA
-    if( (vixnew['Close'].iloc[-1] > (1.05*vixnew['10_SMA'].iloc[-1])) & (vixnew['Close'].iloc[-1] > (1.05*vixnew['10_SMA'].iloc[-2])) & ((vixnew['Close'].iloc[-1]) > (1.05*vixnew['10_SMA'].iloc[-3]))  &   (df['Adj Close'].iloc[-1] > df['200_SMA'].iloc[-1]) ):         
-        conditions_met = conditions_met.append({'conditions_met':22},ignore_index=True)
+    #if( (vixnew['Close'].iloc[-1] > (1.05*vixnew['10_SMA'].iloc[-1])) & (vixnew['Close'].iloc[-1] > (1.05*vixnew['10_SMA'].iloc[-2])) & ((vixnew['Close'].iloc[-1]) > (1.05*vixnew['10_SMA'].iloc[-3]))  &   (df['Adj Close'].iloc[-1] > df['200_SMA'].iloc[-1]) ):         
+        #conditions_met = conditions_met.append({'conditions_met':22},ignore_index=True)
 
     #23 RSI(2) < 5 & Close > 200 SMA
     if( (df['RSI2'].iloc[-1] < 5) & (df['Adj Close'].iloc[-1] > df['200_SMA'].iloc[-1]) ):
@@ -238,7 +238,8 @@ def check():
     for index,row in conditions_met.iterrows():
         display = display.append(master[master['Condition']==row['conditions_met']])
     
- 
+    st.dataframe(df)
+    st.dataframe(vixnew)
     if(len(display)==0):
         st.header('No Conditions met today')
     if(len(display)!=0):
@@ -251,36 +252,6 @@ def check():
 # In[11]:
 
 
-def send_alert():
-
-    try:
-        if(len(conditions_met)==0):
-            x=datetime.datetime.today().date()
-            print(x)
-            send_tel_alert('No alert for {}'.format(x))
-
-        else:
-             for index,row in conditions_met.iterrows():
-                x=row['conditions_met']
-                for index,row in master.iterrows():
-                    if(row['Condition']==x):
-                        textsend = 'Condition: ' + str(row['Condition']) + os.linesep+ 'Instrument: ' + str(row['Instrument']) + os.linesep+ 'Type: ' + str(row['Type']) + os.linesep+ 'Long/Short: ' + str(row['Long/Short']) + os.linesep+ 'Entry: ' + str(row['Entry']) + os.linesep+ 'Exit: ' + str(row['Exit']) + os.linesep+ 'Profit Factor: ' + str(row['Profit Factor']) + os.linesep+ 'Win Days: ' + str(row['Win Days']) 
-                        send_tel_alert(textsend)
-
-    except:
-        if(len(conditions_met)==0):
-            send_tel_alert('No alert for today')
-
-        else:
-             for index,row in conditions_met.iterrows():
-                x=row['conditions_met']
-                for index,row in master.iterrows():
-                    if(row['Condition']==x):
-                        textsend = 'Condition: ' + str(row['Condition']) + os.linesep+ 'Instrument: ' + str(row['Instrument']) + os.linesep+ 'Type: ' + str(row['Type']) + os.linesep+ 'Long/Short: ' + str(row['Long/Short']) + os.linesep+ 'Entry: ' + str(row['Entry']) + os.linesep+ 'Exit: ' + str(row['Exit']) + os.linesep+ 'Profit Factor: ' + str(row['Profit Factor']) + os.linesep+ 'Win Days: ' + str(row['Win Days']) 
-                        send_tel_alert(textsend)
-
-
-# In[13]:
 
 
 st.button('Get current conditions', on_click=check())
