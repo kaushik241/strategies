@@ -281,6 +281,8 @@ st.dataframe(df[-10:])
 st.header('Vix Data')
 st.dataframe(vixnew[-5:])
 
+st.text('Made with ❤️ by Kartik')
+
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
