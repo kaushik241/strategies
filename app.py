@@ -2,6 +2,7 @@
 # coding: utf-8
 
 # In[6]:
+import pytz
 
 
 import yfinance as yf
